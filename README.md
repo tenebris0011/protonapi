@@ -2,12 +2,10 @@
 I know that proton offers an interface for pulling your steam library 
 and showing the score for each item in your library but hey, I like learning.
 
----
 ## Purpose
 This API takes a steamid which you can get [here](https://www.steamidfinder.com/)
 and retrieves your library, runs a search against the ProtonDB API to get its rating.
 
----
 ## How to get started
 ### Requirements
 - Docker
@@ -30,7 +28,6 @@ and retrieves your library, runs a search against the ProtonDB API to get its ra
   ```
 - Once the container starts you can hit the API endpoint using http://127.0.0.1:8080/api/v1/games/all?steamid={YOUR_STEAM_ID}
 
----
 ## To Do
 - Optimize the API to return results quicker.
   - This API is slow... Like really slow...
