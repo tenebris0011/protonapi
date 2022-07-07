@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  protonAPI:
+    build:
+      context: .
+      target: "${STAGE}"
+    container_name: protonAPI
+    ports:
+      - "8080:80"
+    environment:
+      - "API_KEY=${API_KEY}"

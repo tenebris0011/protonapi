@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  protonAPI:
+    volumes:
+      - ./app:/code/app
