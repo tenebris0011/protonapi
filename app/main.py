@@ -5,6 +5,7 @@ import os
 import httpx
 import redis
 from fastapi import FastAPI
+from time import sleep
 
 
 def redis_connect() -> redis.client.Redis:
@@ -21,6 +22,21 @@ def redis_connect() -> redis.client.Redis:
     except redis.AuthenticationError:
         print("AuthenticationError")
         sys.exit(1)
+    except redis.exceptions.BusyLoadingError:
+        sleep(5)
+        try:
+            client = redis.Redis(
+                host=os.getenv('REDIS_HOST'),
+                port=os.getenv('REDIS_PORT'),
+                password=os.getenv('REDIS_PASSWORD'),
+                socket_timeout=5
+            )
+            ping = client.ping()
+            if ping is True:
+                return client
+        except redis.AuthenticationError:
+            print("AuthenticationError")
+            sys.exit(1)
 
 
 client = redis_connect()
@@ -123,7 +139,6 @@ app = FastAPI(title="ProtonDB API")
 
 @app.get('/api/v1/update_cache')
 def updateGameRatingCache():
-    print("Updating cache for all games")
     allGames = fetchGames("games")
     for game in allGames['applist']['apps']:
         try:
@@ -144,7 +159,6 @@ def updateGameRatingCache():
 
 @app.get('/api/v1/games/all')
 def getUserGameRatings(steamid: int) -> dict:
-    print("Fetching ratings for user.")
     if steamid:
         userGames = getUserGames(steamid)
         allGames = fetchGames("games")
