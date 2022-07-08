@@ -30,7 +30,11 @@ and retrieves your library, runs a search against the ProtonDB API to get its ra
 - If you want to update the cache for all 2 million games in the steam library https://127.0.0.1:8080/api/v1/update_cache
   - This end point takes awhile to return and requires further optimization
 ## To Do
-- Optimize the API to return results quicker.
-  - This API is slow... Like really slow...
+- Optimize the Update Cache endpoint.
+  - This iterates through 2 million+ records. Need to find a better way to create this cache.
 - Add an endpoint to retrieve user steam id.
-- ~~Fix issue with initial crash of protonapi Docker Container do to Redis Loading~~
+- Process multiple requests to the same end point at once.
+  - Currently, able to call update cache and the user game endpoint at the same time, but unable to run two calls to the same endpoint at once.
+## Completed
+- Implement Redis caching.
+- Fix issue with initial crash of protonapi Docker Container do to Redis Loading.
