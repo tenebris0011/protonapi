@@ -1,13 +1,31 @@
 version: '3'
 
 services:
+  redis:
+    container_name: redis-cont
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis-data:/data
+    command: redis-server --save 10 100 --loglevel warning --requirepass ubuntu
+
   protonAPI:
     image: "protonapi:${TAG}"
     build:
       context: .
       target: "${STAGE}"
     container_name: protonAPI
+    depends_on:
+      - redis
     ports:
       - "8080:80"
     environment:
       - "API_KEY=${API_KEY}"
+      - "REDIS_SERVER_IP=${REDIS_SERVER_IP}"
+      - "REDIS_HOST=redis"
+      - "REDIS_PASSWORD=ubuntu"
+      - "REDIS_PORT=6379"
+
+volumes:
+  redis-data:

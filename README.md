@@ -19,12 +19,12 @@ and retrieves your library, runs a search against the ProtonDB API to get its ra
 - To run the API in production mode
   - Set the STAGE variable in .env to prod and execute the below command 
   ```bash
-  docker compose up -d
+  docker compose --env-file ./.env up -d
   ```
 - To run the API in dev mode
   - Set the STAG variable in .env to dev and execute the below command
   ```bash
-  docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+  docker compose -f .\docker-compose.yml -f .\docker-compose.dev.yml --env-file ./.env up
   ```
 - Once the container starts you can hit the API endpoint using http://127.0.0.1:8080/api/v1/games/all?steamid={YOUR_STEAM_ID}
 

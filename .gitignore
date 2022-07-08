@@ -1,1 +1,10 @@
 /.env.local
+/cache_test.py
+/redis-data/
+/.idea/.gitignore
+/.idea/.name
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/protonapi.iml
+/.idea/vcs.xml
