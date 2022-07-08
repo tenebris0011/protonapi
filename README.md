@@ -27,7 +27,8 @@ and retrieves your library, runs a search against the ProtonDB API to get its ra
   docker compose -f .\docker-compose.yml -f .\docker-compose.dev.yml --env-file ./.env up
   ```
 - Once the container starts you can hit the API endpoint using http://127.0.0.1:8080/api/v1/games/all?steamid={YOUR_STEAM_ID}
-
+- If you want to update the cache for all 2 million games in the steam library https://127.0.0.1:8080/api/v1/update_cache
+  - This end point takes awhile to return and requires further optimization
 ## To Do
 - Optimize the API to return results quicker.
   - This API is slow... Like really slow...
