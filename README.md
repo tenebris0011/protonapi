@@ -32,3 +32,4 @@ and retrieves your library, runs a search against the ProtonDB API to get its ra
 - Optimize the API to return results quicker.
   - This API is slow... Like really slow...
 - Add an endpoint to retrieve user steam id.
+- Fix issue with initial crash of protonapi Docker Container do to Redis Loading
