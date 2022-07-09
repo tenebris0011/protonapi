@@ -35,6 +35,8 @@ and retrieves your library, runs a search against the ProtonDB API to get its ra
 - Add an endpoint to retrieve user steam id.
 - Process multiple requests to the same end point at once.
   - Currently, able to call update cache and the user game endpoint at the same time, but unable to run two calls to the same endpoint at once.
+- Implement proper error handling.
+- Implement logging.
 ## Completed
 - Implement Redis caching.
 - Fix issue with initial crash of protonapi Docker Container do to Redis Loading.
